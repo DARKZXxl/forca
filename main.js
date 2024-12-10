@@ -74,7 +74,7 @@ function estado(voce) {
 }
 
 reiniciar.addEventListener('click', () => {
-    location.href = 'a.html';
+    location.href = 'index.html';
 })
 
 

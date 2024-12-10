@@ -3,5 +3,5 @@ const sozinho = document.getElementById('sozinho').addEventListener('click', () 
 })
 
 const comAmigo = document.getElementById('comAmigo').addEventListener('click', () => {
-    location.href = 'index.html'
+    location.href = 'comAmigo.html'
 })
