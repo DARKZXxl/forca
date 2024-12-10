@@ -29,6 +29,7 @@ button.forEach(btn => {
                     if(item.value === valor) {
                         valores.push(valor)
                         item.innerText = valor
+                        item.style.backgroundColor = '#ffffff00'
                         btn.style.backgroundColor = '#04ff00'
                     }
                     

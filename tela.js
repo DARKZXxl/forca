@@ -15,6 +15,18 @@ let an = ''
 const animais = ['cachorro', 'peixe', 'rato', 'porco', 'galinha', 'leao', 'pinguin', 'zebra', 'tartaruga', 'cobra',]  
 const frutas = ['maça', 'banana', 'uva', 'tomate', 'jaca', 'goiaba', 'melancia', 'coco', 'abacate', 'abacaxi']
 
+const dicasF = {
+    maça: ['e vermelha', 'bem doce', 'da em arvore'],
+    banana: ['sementes pequenas', 'fruta tropical', 'e amarela'],
+    uva: ['pequenas', 'se compra varias de uma vez', 'usa para fazer bebida(alcolica)'],
+    tomate: ['usada em saladas', 'muitas sementes', 'algumas pessoas nao sabem que e fruta'],
+    jaca: ['bem grande', 'usa oleo para cortar', 'nome de um corte'],
+    goiaba: ['sementes duras', 'casca verde', 'muitas sementes'],
+    melancia: ['a casca e descartavel', 'tem sementes', 'fruta mais suculenta'],
+    coco: ['casca muito dura', 'normal nas praias', 'muito refrescante'],
+    abacate: ['fruta com mais gordura', 'semente grande', 'utilizase na culinaria mexicana'],
+    abacaxi: ['cresce do chao', 'bem doce', 'possui espinhos']
+}
 const dicasA = {
     cachorro: ['amigo dos humanos', 'tem varias raças', 'brincalhão'],
     peixe: ['vive na agua', 'varios tipos e tamanhos', 'facil de cuidar'],
@@ -42,10 +54,24 @@ const redondo = Math.trunc(numMaior)
         div.value = item
         letras.appendChild(div)
     })
-    tudo(arry)
+    tudo(arry, dicasA)
 }
 
-function tudo(palavra) {
+if(tema === 'fruta') {
+    ajuda.innerText = 'fruta'
+    an = frutas[redondo]
+    const arry = [...an]
+    arry.forEach(item => {
+        const div = document.createElement('div')
+        div.id = 'divCriada'
+        div.value = item
+        letras.appendChild(div)
+    })
+    tudo(arry, dicasF)
+
+}
+
+function tudo(palavra, dicas) {
     button.forEach(btn => {
         btn.addEventListener('click', ev => {
             ev.preventDefault()
@@ -60,6 +86,9 @@ function tudo(palavra) {
                         btn.style.backgroundColor = '#04ff00'
                     }
                 })
+                if(valores.length === palavra.length) {
+                    estado('ganhou')
+                }
             }
             else {
                 btn.style.backgroundColor = 'red'
@@ -87,25 +116,24 @@ function tudo(palavra) {
                 button.forEach(item => item.setAttribute('disabled', 'true'))
             }
             }
-            
-            function estado(voce) {
-                resultado.innerText = 'voce ' + voce + '!'
-                result.style.display = 'block'
-            }
-
-            reiniciar.addEventListener('click', () => {
-                location.href = 'index.html';
-            })
         })
     })
     mudar.addEventListener('click', () => {
         if(i <= 2) {
-            const dica = dicasA[an]
+            const dica = dicas[an]
             ajuda.innerText = dica[i]
             i++
         }
     })
+    
+function estado(voce) {
+    resultado.innerText = 'voce ' + voce + '!'
+    result.style.display = 'block'
+}
 
+reiniciar.addEventListener('click', () => {
+    location.href = 'index.html';
+})
 }
 
 
